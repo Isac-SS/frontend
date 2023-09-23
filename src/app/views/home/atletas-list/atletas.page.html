@@ -6,8 +6,8 @@
 
 <ion-content>
   <ion-list class="list">
-    <ion-item>
-      <ion-label></ion-label>
+    <ion-item *ngFor="let atleta of atletasList">
+      <ion-label>{{ atleta.nome }}</ion-label>
     </ion-item>
   </ion-list>
 </ion-content>
