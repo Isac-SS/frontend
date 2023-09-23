@@ -15,8 +15,6 @@ export class HomeComponent {
       this.router.navigate(['/atletas']);
     } else if (page === 'eventos') {
       this.router.navigate(['/eventos']);
-    } else if (page === 'embarcacoes') {
-      this.router.navigate(['/embarcacoes']);
     }
   }
 }

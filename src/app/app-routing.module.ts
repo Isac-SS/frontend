@@ -9,11 +9,11 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./views/home/home.module').then( m => m.HomePageModule)
   },
   {
     path: 'atletas',
-    loadChildren: () => import('./atletas/atletas.module').then( m => m.AtletasPageModule)
+    loadChildren: () => import('./views/home/atletas-list/atletas.module').then( m => m.AtletasPageModule)
   },
   {
     path: 'eventos',
