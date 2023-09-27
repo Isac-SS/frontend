@@ -14,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent, // Use "component" em vez de "loadChildren"
+    component: HomeComponent,
   },
 ];
 
