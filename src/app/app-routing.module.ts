@@ -1,25 +1,10 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
-  {
-    path: 'home',
-    loadChildren: () => import('./views/home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: 'atletas',
-    loadChildren: () => import('./views/home/atletas-list/atletas.module').then( m => m.AtletasPageModule)
-  },
-  {
-    path: 'eventos',
-    loadChildren: () => import('./eventos/eventos.module').then( m => m.EventosPageModule)
-  },
-
+  { path: '', redirectTo: 'home', pathMatch: 'full' },  // Rota de redirecionamento para a página inicial
+  { path: 'home', component: HomeComponent },
 ];
 
 @NgModule({
@@ -28,4 +13,5 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }
