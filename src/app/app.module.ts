@@ -17,6 +17,13 @@ import { HomeModule } from './home/home.module';
 import { EdicaoAtletaComponent } from './components/edicao-atleta/edicao-atleta.component';
 
 
+//material
+import { MatToolbarModule } from '@angular/material/toolbar';
+
+//components
+import { HomeComponent } from './components/home/home.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +38,10 @@ import { EdicaoAtletaComponent } from './components/edicao-atleta/edicao-atleta.
     AppRoutingModule,
     MatTableModule,
     MatListModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatToolbarModule,
+    
+
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AtletasService ],
   bootstrap: [AppComponent],
