@@ -7,19 +7,17 @@
   <form [formGroup]="atletaForm" (ngSubmit)="salvarEdicao()">
     <ion-item>
       <ion-label position="floating">Nome</ion-label>
-      <ion-label formControlName=""></ion-label>
-      <ion-input placeholder="Alterar Nome" clearInput></ion-input>
+      <ion-input formControlName="nome" placeholder="Alterar Nome" clearInput type="text"></ion-input>
     </ion-item>
     
     <ion-item>
       <ion-label position="floating">CPF</ion-label>
-      <ion-label formControlName="cpf"></ion-label>
-      <ion-input placeholder="Alterar CPF" clearInput></ion-input>
+      <ion-input formControlName="cpf" placeholder="Alterar CPF" clearInput type="number"></ion-input>
     </ion-item>
 
     <ion-button type="submit" expand="full">
       <ion-icon slot="end" name="checkmark-outline"></ion-icon>
-      Salvar
+      Alterar
     </ion-button>
   </form>
 </ion-content>
