@@ -1,0 +1,8 @@
+<div class="home container">
+  <div class="div-slogan">
+    <button class="first-btn" (click)="mostrarAtletas()">Atletas</button>
+    <button>Eventos</button>
+  </div>
+
+  <app-lista-atletas *ngIf="mostrarListaAtletas"></app-lista-atletas> 
+</div>

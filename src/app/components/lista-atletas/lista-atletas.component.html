@@ -1,0 +1,20 @@
+
+<ion-content class="container-list">
+    <ion-list class="list">
+      <ion-item *ngFor="let atleta of atletasList">
+        <ion-label>{{ atleta.nome }}<br><br>CPF: {{ atleta.cpf }}</ion-label>
+    
+        <ion-buttons slot="end">
+          <ion-button (click)="editarAtleta(atleta)">
+            <ion-icon name="create"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+    
+        <ion-buttons slot="end">
+          <ion-button (click)="excluirAtleta(atleta)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+    </ion-list>
+  </ion-content>
