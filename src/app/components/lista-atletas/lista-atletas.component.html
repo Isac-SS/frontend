@@ -2,7 +2,7 @@
 <ion-content class="container-list">
     <ion-list class="list">
       <ion-item *ngFor="let atleta of atletasList">
-        <ion-label>{{ atleta.nome }}<br><br>CPF: {{ atleta.cpf }}</ion-label>
+        <ion-label>Código: {{ atleta.cod }}<br><br>{{ atleta.nome }}<br><br>CPF: {{ atleta.cpf }}</ion-label>
     
         <ion-buttons slot="end">
           <ion-button (click)="editarAtleta(atleta)">

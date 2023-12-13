@@ -28,7 +28,7 @@ import { HomeComponent } from './components/home/home.component';
   declarations: [
     AppComponent,
     HeaderComponent,
-    EdicaoAtletaComponent
+    
   ],
   imports: [
     HomeModule,

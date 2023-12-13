@@ -1,5 +1,3 @@
-// lista-atletas.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { AtletasService } from 'src/app/shared/services/atletas/atletas.service';
 import { Atleta } from 'src/app/shared/model/atleta.model';
@@ -26,6 +24,7 @@ export class ListaAtletasComponent implements OnInit {
   getAtletas() {
     this.atletaService.getAtletasList().subscribe((data: Atleta[]) => {
       this.atletasList = data;
+      console.log(this.atletasList)
     });
   }
 
@@ -40,7 +39,7 @@ export class ListaAtletasComponent implements OnInit {
     modal.onDidDismiss().then((dadosEditados) => {
       if (dadosEditados && dadosEditados.data) {
         const atletaEditado: Atleta = dadosEditados.data;
-        this.atletaService.editarAtleta(atleta.id, atletaEditado).subscribe(() => {
+        this.atletaService.editarAtleta(atleta.cod, atletaEditado).subscribe(() => {
           this.getAtletas();
         });
       }
@@ -50,8 +49,15 @@ export class ListaAtletasComponent implements OnInit {
   }
 
   excluirAtleta(atleta: Atleta) {
-    this.atletaService.excluirAtleta(atleta.id).subscribe(() => {
-      this.getAtletas();
-    })
+    if (atleta.cod) {
+      this.atletaService.excluirAtleta(atleta.cod).subscribe(() => {
+        console.log(`Atleta ${atleta.cod} excluído com sucesso.`);
+        this.getAtletas();
+      }, (error) => {
+        console.error(`Erro ao excluir atleta: ${error}`);
+      });
+    } else {
+      console.error('Código do atleta indefinido');
+    }
   }
 }

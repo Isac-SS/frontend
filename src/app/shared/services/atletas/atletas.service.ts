@@ -22,13 +22,13 @@ export class AtletasService {
     return this.httpClient.get<Atleta[]>(`${this.apiUrl}atletas`);
   }
 
-  public editarAtleta(atletaId: number, atleta: Atleta): Observable<Atleta> {
-    const url = `${this.apiUrl}atletas/${atletaId}`;
+  public editarAtleta(atletaCod: number, atleta: Atleta): Observable<Atleta> {
+    const url = `${this.apiUrl}atletas/${atletaCod}`;
     return this.httpClient.put<Atleta>(url, atleta, this.httpOptions);
   }
 
-  public excluirAtleta(atletaId: number): Observable<void> {
-    const url = `${this.apiUrl}atletas/${atletaId}`;
+  public excluirAtleta(atletaCod: number): Observable<void> {
+    const url = `${this.apiUrl}atletas/excluir/${atletaCod}`;
     return this.httpClient.delete<void>(url, this.httpOptions).pipe(
       catchError((error) => {
         console.error('Erro ao excluir atleta', error);

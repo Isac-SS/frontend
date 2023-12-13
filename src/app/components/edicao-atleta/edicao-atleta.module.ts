@@ -1,13 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { EdicaoAtletaComponent } from './edicao-atleta.component';
-import { ReactiveFormsModule } from '@angular/forms';
-
 
 @NgModule({
-  declarations: [EdicaoAtletaComponent],
-  imports: [CommonModule, IonicModule, ReactiveFormsModule], 
-  exports: [EdicaoAtletaComponent],
+  declarations: [
+    EdicaoAtletaComponent,
+  ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    IonicModule, 
+  ],
+  exports: [
+    EdicaoAtletaComponent,
+  ],
 })
 export class EdicaoAtletaModule {}

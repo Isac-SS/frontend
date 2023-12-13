@@ -1,5 +1,5 @@
 export class Atleta {
-  'id': number;
+  'cod': number;
   'nome': string;
   'cpf': number;
 }

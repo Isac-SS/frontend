@@ -42,7 +42,7 @@ export class EdicaoAtletaComponent implements OnInit {
           this.atleta.nome = nome;
           this.atleta.cpf = cpf;
   
-          this.atletasService.editarAtleta(this.atleta.id, this.atleta).subscribe(() => {
+          this.atletasService.editarAtleta(this.atleta.cod, this.atleta).subscribe(() => {
           });
   
           this.fecharModal();
