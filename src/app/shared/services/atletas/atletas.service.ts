@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Atleta } from '../../model/atleta.model';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AtletasService {
   apiUrl = 'http://localhost:3000/api/';
+
+  private recarregarAtletasSubject = new Subject<void>();
+
+  recarregarAtletas$ = this.recarregarAtletasSubject.asObservable();
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -20,6 +24,20 @@ export class AtletasService {
 
   public getAtletasList(): Observable<Atleta[]> {
     return this.httpClient.get<Atleta[]>(`${this.apiUrl}atletas`);
+  }
+
+  public cadastrarAtleta(novoAtleta: Atleta): Observable<Atleta> {
+    const url = `${this.apiUrl}atleta/cadastro`;
+  
+    return this.httpClient.post<Atleta>(url, novoAtleta, this.httpOptions).pipe(
+      catchError((error) => {
+        console.error('Erro ao cadastrar atleta', error);
+        throw error;
+      }),
+      tap(() => {
+        this.recarregarAtletasSubject.next();
+      })
+    );
   }
 
   public editarAtleta(atletaCod: number, atleta: Atleta): Observable<Atleta> {
