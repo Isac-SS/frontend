@@ -13,25 +13,26 @@ import { MatTableModule } from '@angular/material/table';
 import { MatListModule } from '@angular/material/list';
 
 import { HeaderComponent } from './components/header/header.component';
-import { HomeModule } from './home/home.module';
-import { EdicaoAtletaComponent } from './components/edicao-atleta/edicao-atleta.component';
+import { HomeModule } from './components/home/home.module';
 
 
 //material
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 //components
-import { HomeComponent } from './components/home/home.component';
+import { EdicaoAtletaComponent } from './components/atletas/edicao-atleta/edicao-atleta.component';
+import { CriacaoAtletaComponent } from './components/atletas/criacao-atleta/criacao-atleta.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    EdicaoAtletaComponent,
+    CriacaoAtletaComponent
     
   ],
   imports: [
-    HomeModule,
     HttpClientModule,
     BrowserModule,
     IonicModule.forRoot(),
@@ -40,6 +41,7 @@ import { HomeComponent } from './components/home/home.component';
     MatListModule,
     ReactiveFormsModule,
     MatToolbarModule,
+    
     
 
   ],
