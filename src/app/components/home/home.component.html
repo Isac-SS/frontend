@@ -1,3 +1,12 @@
-<p>
-  home works!
-</p>
+<div class="home container">
+  <div class="div-slogan">
+    <button class="first-btn" (click)="mostrarAtletas()">Atletas</button>
+    <button>Eventos</button>
+  </div>
+
+  <app-lista-atletas *ngIf="mostrarListaAtletas"></app-lista-atletas> 
+  
+  <button (click)="abrirPopupCriacaoAtleta()" class="botao-criar">
+    +
+  </button>
+</div>
