@@ -1,0 +1,24 @@
+<ion-content class="container-list">
+  <ion-searchbar [(ngModel)]="termoPesquisa" (ionChange)="filtrarAtletas()"></ion-searchbar>
+
+  <ion-list class="list" [inset]="true">
+    <ion-item class="item" *ngFor="let atleta of atletasFiltrados" color="light">
+      <ion-label class="label">
+        Código: {{ atleta.cod }}<br><br>
+        {{ atleta.nome }}<br><br>
+        CPF: {{ atleta.cpf }}</ion-label>
+      
+      <ion-buttons slot="end">
+        <ion-button (click)="editarAtleta(atleta)">
+          <ion-icon name="create"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+
+      <ion-buttons slot="end">
+        <ion-button (click)="excluirAtleta(atleta)">
+          <ion-icon class="trash" name="trash"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+</ion-content>

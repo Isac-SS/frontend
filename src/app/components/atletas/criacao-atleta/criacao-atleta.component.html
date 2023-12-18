@@ -1,0 +1,29 @@
+<ion-content>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Criar Atleta</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="fecharModal()">
+          <ion-icon name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <form [formGroup]="atletaForm" (ngSubmit)="cadastrarAtleta()">
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input formControlName="nome" placeholder="Nome do(a) atleta" clearInput type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">CPF</ion-label>
+      <ion-input formControlName="cpf" placeholder="CPF do(a) atleta" clearInput type="number"></ion-input>
+    </ion-item>
+
+    <ion-button type="submit" expand="full">
+      <ion-icon slot="end" name="checkmark-outline"></ion-icon>
+      Cadastrar
+    </ion-button>
+  </form>
+</ion-content>
