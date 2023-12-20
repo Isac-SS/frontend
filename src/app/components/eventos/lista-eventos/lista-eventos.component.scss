@@ -1,0 +1,20 @@
+.container-list {
+    position: relative;
+    top: 230px;
+    width: 90vw;
+    height: 60%;
+
+    ion-item {
+        padding: 5px;
+        background: rgba(158, 221, 190, 0.644);
+    }
+
+    ion-button {
+        height: 55px;
+        border-radius: 5px;
+      
+        .trash {
+          color: rgb(204, 30, 30);
+        }
+      }
+}
