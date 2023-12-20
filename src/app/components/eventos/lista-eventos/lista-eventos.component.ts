@@ -41,12 +41,18 @@ export class ListaEventosComponent implements OnInit {
     this.unsubscribe$.complete();
   }
 
-  getEventos() {
+  async getEventos() {
     this.eventosService.getEventosList().subscribe((data: Evento[]) => {
-      this.eventosList = data;
-      console.log(this.eventosList)
-      this.filtrarEventos();
+      this.eventosList = data.map(evento => ({
+        ...evento, dataFormatada: this.formatarData(evento.dataEvento)
+      }));
+
+      console.log(this.filtrarEventos())
     });
+  }
+
+  formatarData(data: Date): string | null {
+    return this.dataPipe.transform(data, 'dd/MM/yy');
   }
 
   filtrarEventos() {

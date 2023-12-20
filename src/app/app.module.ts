@@ -13,7 +13,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatListModule } from '@angular/material/list';
 
 import { HeaderComponent } from './components/header/header.component';
-import { HomeModule } from './components/home/home.module';
 
 
 //material
@@ -22,14 +21,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 //components
 import { EdicaoAtletaComponent } from './components/atletas/edicao-atleta/edicao-atleta.component';
 import { CriacaoAtletaComponent } from './components/atletas/criacao-atleta/criacao-atleta.component';
-
+import { ListaEventosModule } from './components/eventos/lista-eventos/lista-eventos.module'; 
+import { HomeModule } from './components/home/home.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     EdicaoAtletaComponent,
-    CriacaoAtletaComponent
+    CriacaoAtletaComponent,
     
   ],
   imports: [
@@ -41,7 +41,8 @@ import { CriacaoAtletaComponent } from './components/atletas/criacao-atleta/cria
     MatListModule,
     ReactiveFormsModule,
     MatToolbarModule,
-    
+    ListaEventosModule,
+    HomeModule
     
 
   ],
