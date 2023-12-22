@@ -1,10 +1,10 @@
 <ion-content class="container-list">
-  <ion-searchbar [(ngModel)]="termoPesquisa" (ionChange)="filtrarAtletas()"></ion-searchbar>
+  <ion-searchbar [(ngModel)]="termoPesquisa" (ionChange)="filtrarAtletas()" placeholder="Pesquisar por Código"></ion-searchbar>
 
   <ion-list class="list" [inset]="true">
-    <ion-item class="item" *ngFor="let atleta of atletasFiltrados" color="light">
+    <ion-item class="item-background-color" *ngFor="let atleta of atletasFiltrados" >
       <ion-label class="label">
-        Código: {{ atleta.cod }}<br><br>
+        <p>Código: {{ atleta.cod }}</p><br><br>
         {{ atleta.nome }}<br><br>
         CPF: {{ atleta.cpf }}</ion-label>
       

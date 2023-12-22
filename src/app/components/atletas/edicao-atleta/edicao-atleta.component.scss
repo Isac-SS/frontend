@@ -1,0 +1,14 @@
+ion-header {
+  display: flex;
+  align-items: center;
+
+  ion-toolbar {
+    --background: linear-gradient(90deg, #48793c 22%, #bcc200 100%);
+    padding: 15px;
+    color: #fff;
+  }
+}
+
+ion-button {
+  --background: linear-gradient(90deg, #48793c 22%, #bcc200 100%);
+}

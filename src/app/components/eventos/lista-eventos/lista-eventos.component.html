@@ -1,16 +1,16 @@
 <ion-content class="container-list">
-  <ion-searchbar></ion-searchbar>
+  <ion-searchbar placeholder="Pesquisar por Código"></ion-searchbar>
 
   <ion-list class="list" [inset]="true">
-    <ion-item class="item" *ngFor="let evento of eventosFiltrados" color="light">
+    <ion-item class="item" *ngFor="let evento of eventosFiltrados">
       <ion-label class="label">
-        {{ evento.id }}<br><br>
+        <p>{{ evento.id }}</p><br><br>
         {{ evento.nome }}<br><br>
         {{ evento.inicioInscricoes }}
         </ion-label>
       
       <ion-buttons slot="end">
-        <ion-button>
+        <ion-button *ngIf="evento" (click)="editarEvento(evento)">
           <ion-icon name="create"></ion-icon>
         </ion-button>
       </ion-buttons>

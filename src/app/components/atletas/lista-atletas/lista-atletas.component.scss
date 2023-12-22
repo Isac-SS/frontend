@@ -3,19 +3,48 @@
   top: 230px;
   width: 90vw;
   height: 60%;
+
+  ion-searchbar {
+    margin-left: auto;
+    margin-right: auto;
+    --border-radius: 8px;
+    width: 95%;
+  }
   
   ion-item {
+    color:cornsilk;
     font-weight: 500;
+    --background: #0d530de1;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    
+
+    p {
+      font-size: 1.1rem;
+      color: #ffab4c;
+      margin: 0;
+    }
+
+    ion-label {
+      margin: 15px 0;
+    }
   }
 
   ion-button {
     height: 55px;
     border-radius: 5px;
   
+    .create{
+      color: rgb(79, 42, 165);
+    }
+
     .trash {
-      color: rgb(204, 30, 30);
+      color: rgb(128, 3, 3);
     }
   }
 }
 
 
+
+
+//hexadecimal para cor do código #ffab4c

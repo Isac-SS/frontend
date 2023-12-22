@@ -1,6 +1,6 @@
 export class Evento {
-    'id': String;
-    'nome': String;
+    'id': string;
+    'nome': string;
     'dataEvento': Date;
     'inicioInscricoes': Date;
     'fimInscricoes': Date

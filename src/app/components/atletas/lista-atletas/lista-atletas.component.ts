@@ -42,7 +42,6 @@ export class ListaAtletasComponent implements OnInit {
   getAtletas() {
     this.atletaService.getAtletasList().subscribe((data: Atleta[]) => {
       this.atletasList = data;
-      console.log(this.atletasList)
       this.filtrarAtletas();
     });
   }

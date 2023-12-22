@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ModalController } from '@ionic/angular';
+import { Evento } from 'src/app/shared/model/evento.model';
+import { EventosService } from 'src/app/shared/services/atletas/eventos.service';
+
 
 @Component({
   selector: 'app-edicao-evento',
@@ -6,9 +11,43 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edicao-evento.component.scss'],
 })
 export class EdicaoEventoComponent  implements OnInit {
+  @Input()
+  evento!: Evento;
 
-  constructor() { }
+  eventoForm!: FormGroup
 
-  ngOnInit() {}
+  constructor(
+    private modalController: ModalController,
+    private fb: FormBuilder,
+    private eventosService: EventosService
+  ) { }
 
+  ngOnInit() {
+    this.eventoForm = this.fb.group({
+      nome: [this.evento.nome || '', Validators.required],
+      dataEvento: [this.evento.dataEvento || '', Validators.required],
+      inicioInscricoes: [this.evento.inicioInscricoes || '', Validators.required],
+      fimInscricoes: [this.evento.fimInscricoes || '', Validators.required],
+    });
+  }
+
+  fecharModal() {
+    this.modalController.dismiss();
+  }
+ 
+  salvarEdicao() {
+    if (this.evento && this.eventoForm) {
+      if (this.eventoForm.valid) {
+        this.evento.nome = this.eventoForm.get('nome')?.value;
+        this.evento.dataEvento = this.eventoForm.get('dataEvento')?.value;
+        this.evento.inicioInscricoes = this.eventoForm.get('inicioInscricoes')?.value;
+        this.evento.fimInscricoes = this.eventoForm.get('fimInscricoes')?.value;
+
+        this.eventosService.editarEvento(this.evento.id, this.evento).subscribe(() => {
+        });
+
+        this.fecharModal();
+      }
+    }
+  }
 }
