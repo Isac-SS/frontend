@@ -25,11 +25,20 @@ export class HomeComponent implements OnInit {
     this.mostrarListaEventos = true;
   }
 
-  async abrirPopupCriacaoAtleta() {
-    const modal = await this.modalController.create({
-      component: CriacaoAtletaComponent,
-      componentProps: {},
-    });
-    return await modal.present();
+  async abrirPopupCriacaoItem() {
+    let component;
+    if(this.mostrarListaAtletas) {
+      component = CriacaoAtletaComponent;
+    } else if (this.mostrarListaEventos) {
+      alert("ainda vou criar")
+    }
+    
+    if(component) {
+      const modal = await this.modalController.create({
+        component: CriacaoAtletaComponent,
+        componentProps: {},
+      });
+      return await modal.present();
+    } 
   }
 }
