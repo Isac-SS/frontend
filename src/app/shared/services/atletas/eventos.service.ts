@@ -27,7 +27,7 @@ export class EventosService {
   }
 
   public cadastrarEvento(novoEvento: Evento): Observable<Evento> {
-    const url = `${this.apiUrl}evento/cadastro`;
+    const url = `${this.apiUrl}eventos/novo`;
 
     return this.httpClient.post<Evento>(url, novoEvento, this.httpOptions).pipe(
       catchError((error) => {
