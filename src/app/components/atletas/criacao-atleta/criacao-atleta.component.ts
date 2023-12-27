@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { AtletasService } from 'src/app/shared/services/atletas/atletas.service';
 
-
 @Component({
   selector: 'app-criacao-atleta',
   templateUrl: './criacao-atleta.component.html',

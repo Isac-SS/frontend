@@ -1,0 +1,37 @@
+ion-header {
+    display: flex;
+    align-items: center;
+  
+    ion-toolbar {
+      --background: linear-gradient(90deg, #48793c 22%, #bcc200 100%);
+      padding: 15px;
+      color: #fff;
+    }
+  }
+  
+  ion-content.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px; /* Ajuste conforme necessário */
+  }
+  
+  form {
+    width: 100%;
+    max-width: 400px; /* Ajuste conforme necessário */
+  }
+  
+  ion-item {
+    margin-bottom: 15px; /* Ajuste conforme necessário */
+  }
+  
+  ion-datetime {
+    width: 100%;
+  }
+  
+  ion-button {
+    --background: linear-gradient(90deg, #48793c 22%, #bcc200 100%);
+    margin-top: 20px; /* Ajuste conforme necessário */
+  }
+  

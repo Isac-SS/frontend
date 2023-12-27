@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { CriacaoAtletaComponent } from '../atletas/criacao-atleta/criacao-atleta.component'; 
+import { CriacaoEventoComponent } from '../eventos/criacao-evento/criacao-evento.component';
 
 @Component({
   selector: 'app-home',
@@ -30,12 +31,12 @@ export class HomeComponent implements OnInit {
     if(this.mostrarListaAtletas) {
       component = CriacaoAtletaComponent;
     } else if (this.mostrarListaEventos) {
-      alert("ainda vou criar")
+      component = CriacaoEventoComponent;
     }
     
     if(component) {
       const modal = await this.modalController.create({
-        component: CriacaoAtletaComponent,
+        component: component,
         componentProps: {},
       });
       return await modal.present();

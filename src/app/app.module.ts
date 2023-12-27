@@ -19,10 +19,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 //components
+import { HomeModule } from './components/home/home.module';
 import { EdicaoAtletaComponent } from './components/atletas/edicao-atleta/edicao-atleta.component';
 import { CriacaoAtletaComponent } from './components/atletas/criacao-atleta/criacao-atleta.component';
 import { ListaEventosModule } from './components/eventos/lista-eventos/lista-eventos.module'; 
-import { HomeModule } from './components/home/home.module';
+import { CriacaoEventoComponent } from './components/eventos/criacao-evento/criacao-evento.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { HomeModule } from './components/home/home.module';
     HeaderComponent,
     EdicaoAtletaComponent,
     CriacaoAtletaComponent,
+    CriacaoEventoComponent
     
   ],
   imports: [

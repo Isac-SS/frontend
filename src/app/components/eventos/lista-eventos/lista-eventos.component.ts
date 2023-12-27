@@ -80,13 +80,19 @@ export class ListaEventosComponent implements OnInit {
   
       if (dadosEditados && dadosEditados.data) {
         const eventoEditado: Evento = dadosEditados.data;
-        this.eventosService.editarEvento(evento.id, eventoEditado).subscribe(() => {
-          this.getEventos();
-        });
+        // Certifique-se de formatar as datas antes de enviá-las para a API
+        eventoEditado.dataEvento = new Date(eventoEditado.dataEvento);
+        eventoEditado.inicioInscricoes = new Date(eventoEditado.inicioInscricoes);
+        eventoEditado.fimInscricoes = new Date(eventoEditado.fimInscricoes);
+  
+        this.eventosService
+          .editarEvento(evento.id, eventoEditado)
+          .subscribe(() => {
+            this.getEventos();
+          });
       }
     });
-    
-    // Abre o modal
+  
     await modal.present();
   }
 }
