@@ -6,6 +6,7 @@ import { EdicaoEventoComponent } from '../edicao-evento/edicao-evento.component'
 import { DatePipe } from '@angular/common';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { DateUtils } from 'src/utils/date-utils';
 
 @Component({
   selector: 'app-lista-eventos',
@@ -44,10 +45,10 @@ export class ListaEventosComponent implements OnInit {
     this.eventosService.getEventosList().subscribe((data: Evento[]) => {
       this.eventosList = data.map((evento) => ({
         ...evento,
-        dataFormatada: this.formatarData(evento.dataEvento),
+        dataFormatada: DateUtils.formatarParaBr(new Date(evento.dataEvento)),
       }));
-
-      console.log(this.filtrarEventos());
+  
+      this.filtrarEventos();  
     });
   }
 
@@ -63,10 +64,10 @@ export class ListaEventosComponent implements OnInit {
         evento.id.toString().includes(this.termoPesquisa)
       );
     }
+    console.log(this.eventosFiltrados);
   }
 
   async editarEvento(evento: Evento) {
-    console.log('Clicou no ícone de edição', evento);
   
     const modal = await this.modalController.create({
       component: EdicaoEventoComponent,
@@ -76,15 +77,10 @@ export class ListaEventosComponent implements OnInit {
     });
   
     modal.onDidDismiss().then((dadosEditados) => {
-      console.log('Dados editados:', dadosEditados);
   
       if (dadosEditados && dadosEditados.data) {
         const eventoEditado: Evento = dadosEditados.data;
-        // Certifique-se de formatar as datas antes de enviá-las para a API
-        eventoEditado.dataEvento = new Date(eventoEditado.dataEvento);
-        eventoEditado.inicioInscricoes = new Date(eventoEditado.inicioInscricoes);
-        eventoEditado.fimInscricoes = new Date(eventoEditado.fimInscricoes);
-  
+
         this.eventosService
           .editarEvento(evento.id, eventoEditado)
           .subscribe(() => {
