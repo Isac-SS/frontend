@@ -1,7 +1,8 @@
-export interface Evento {
+export class Evento {
     'id': string;
     'nome': string;
     'dataEvento': Date;
     'inicioInscricoes': Date;
-    'fimInscricoes': Date
+    'fimInscricoes' = Date;
+    'dataFormatada': string
 }
