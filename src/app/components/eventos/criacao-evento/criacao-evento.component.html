@@ -27,13 +27,13 @@
       <ion-datetime formControlName="inicioInscricoes" placeholder="Selecione a data de início das inscrições" display-format="DD/MM/YYYY" clearInput></ion-datetime>
     </ion-item>
     
-
     <ion-item>
       <ion-label position="floating">Término das Inscrições</ion-label>
       <ion-datetime formControlName="fimInscricoes" placeholder="Selecione a data de término das inscrições" display-format="DD/MM/YYYY" clearInput></ion-datetime>
     </ion-item>
    
-    <ion-button type="button" expand="full" (click)="cadastrarEvento()">
+    <!-- Alteração: Use type="submit" para acionar o ngSubmit -->
+    <ion-button type="submit" expand="full">
       <ion-icon slot="end" name="checkmark-outline"></ion-icon>
       Cadastrar Evento
     </ion-button>

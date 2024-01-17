@@ -14,8 +14,8 @@ export class DateUtils {
     static converterParaDateBr(dataStr: string): Date {
       const partes = dataStr.split('/');
       const dia = parseInt(partes[0], 10);
-      const mes = parseInt(partes[1], 10) - 1; // Meses são indexados de 0 a 11
-      const ano = parseInt(partes[2], 10) + 2000; // Adiciona 2000 para converter para anos de 4 dígitos
+      const mes = parseInt(partes[1], 10) - 1; 
+      const ano = parseInt(partes[2], 10) + 2000; 
       
       return new Date(ano, mes, dia);
     }

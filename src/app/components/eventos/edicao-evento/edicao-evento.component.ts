@@ -42,10 +42,13 @@ export class EdicaoEventoComponent  implements OnInit {
         this.evento.dataEvento = this.eventoForm.get('dataEvento')?.value;
         this.evento.inicioInscricoes = this.eventoForm.get('inicioInscricoes')?.value;
         this.evento.fimInscricoes = this.eventoForm.get('fimInscricoes')?.value;
-
-        this.eventosService.editarEvento(this.evento.id, this.evento).subscribe(() => {
-        });
-
+  
+        // Verifique se evento.id não é undefined antes de chamá-lo
+        if (this.evento.id !== undefined) {
+          this.eventosService.editarEvento(this.evento.id, this.evento).subscribe(() => {
+          });
+        }
+  
         this.fecharModal();
       }
     }

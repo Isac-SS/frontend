@@ -20,7 +20,7 @@ export class CriacaoAtletaComponent implements OnInit {
     this.atletaForm = this.formBuilder.group({
       nome: ['', Validators.required],
       cpf: ['', Validators.required],
-    });
+    }); 
   }
 
   ngOnInit() {}

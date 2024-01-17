@@ -1,8 +1,9 @@
+// evento.model.ts
 export class Evento {
-    'id': string;
+    'id'?: string;
     'nome': string;
     'dataEvento': Date;
     'inicioInscricoes': Date;
-    'fimInscricoes' = Date;
-    'dataFormatada': string
-}
+    'fimInscricoes': Date;
+  }
+  

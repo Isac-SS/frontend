@@ -1,19 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+// lista-eventos.component.ts
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { EventosService } from 'src/app/shared/services/atletas/eventos.service';
 import { Evento } from 'src/app/shared/model/evento.model';
 import { ModalController } from '@ionic/angular';
-import { EdicaoEventoComponent } from '../edicao-evento/edicao-evento.component';
-import { DatePipe } from '@angular/common';
+import * as moment from 'moment';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { DateUtils } from 'src/utils/date-utils';
 
 @Component({
   selector: 'app-lista-eventos',
   templateUrl: './lista-eventos.component.html',
   styleUrls: ['./lista-eventos.component.scss'],
 })
-export class ListaEventosComponent implements OnInit {
+export class ListaEventosComponent implements OnInit, OnDestroy {
   eventosList: Evento[] = [];
   eventosFiltrados: Evento[] = [];
   termoPesquisa: string = '';
@@ -22,8 +21,7 @@ export class ListaEventosComponent implements OnInit {
 
   constructor(
     public eventosService: EventosService,
-    private modalController: ModalController,
-    private dataPipe: DatePipe
+    private modalController: ModalController
   ) {}
 
   ngOnInit() {
@@ -43,17 +41,14 @@ export class ListaEventosComponent implements OnInit {
 
   async getEventos() {
     this.eventosService.getEventosList().subscribe((data: Evento[]) => {
-      this.eventosList = data.map((evento) => ({
-        ...evento,
-        dataFormatada: DateUtils.formatarParaBr(new Date(evento.dataEvento)),
-      }));
-  
-      this.filtrarEventos();  
+      this.eventosList = data;
+      this.filtrarEventos();
     });
   }
 
-  formatarData(data: Date): string | null {
-    return this.dataPipe.transform(data, 'dd/MM/yy');
+  formatarData(data: Date): string {
+    const dataLocal = moment.utc(data).local().toDate();
+    return moment(dataLocal).format('DD/MM/YYYY');
   }
 
   filtrarEventos() {
@@ -61,34 +56,33 @@ export class ListaEventosComponent implements OnInit {
       this.eventosFiltrados = this.eventosList;
     } else {
       this.eventosFiltrados = this.eventosList.filter((evento) =>
-        evento.id.toString().includes(this.termoPesquisa)
+        evento.id && evento.id.toString().includes(this.termoPesquisa)
       );
     }
     console.log(this.eventosFiltrados);
   }
 
   async editarEvento(evento: Evento) {
-  
     const modal = await this.modalController.create({
-      component: EdicaoEventoComponent,
+      component: ListaEventosComponent,
       componentProps: {
         evento: evento,
       },
     });
-  
+
     modal.onDidDismiss().then((dadosEditados) => {
-  
       if (dadosEditados && dadosEditados.data) {
         const eventoEditado: Evento = dadosEditados.data;
 
+        const eventoId = evento.id ? evento.id : '';
         this.eventosService
-          .editarEvento(evento.id, eventoEditado)
+          .editarEvento(eventoId, eventoEditado)
           .subscribe(() => {
             this.getEventos();
           });
       }
     });
-  
+
     await modal.present();
   }
 }

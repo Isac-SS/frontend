@@ -41,7 +41,7 @@ export class EventosService {
   }
 
   public editarEvento(eventoId: string, evento: Evento): Observable<Evento> {
-    const url = `${this.apiUrl}eventos/${eventoId}`;
+    const url = `${this.apiUrl}eventos/editar/${eventoId}`;
     return this.httpClient.put<Evento>(url, evento, this.httpOptions);
   }
 
