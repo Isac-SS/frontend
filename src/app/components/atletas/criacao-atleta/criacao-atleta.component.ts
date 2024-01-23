@@ -27,9 +27,9 @@ export class CriacaoAtletaComponent implements OnInit {
 
   async cadastrarAtleta() {
     if (this.atletaForm.valid) {
-      const novoAtleta = this.atletaForm.value;
-
+      
       try {
+        const novoAtleta = this.atletaForm.value;
         const atletaCadastrado = await this.atletasService.cadastrarAtleta(novoAtleta).toPromise();
         console.log('Atleta cadastrado com sucesso:', atletaCadastrado);
         this.fecharModal();
