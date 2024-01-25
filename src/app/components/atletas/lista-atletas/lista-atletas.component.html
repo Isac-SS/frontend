@@ -1,5 +1,5 @@
 <ion-content class="container-list">
-  <ion-searchbar [(ngModel)]="termoPesquisa" (ionChange)="filtrarAtletas()" placeholder="Pesquisar por Código"></ion-searchbar>
+  <ion-searchbar [(ngModel)]="termoPesquisa" (ionChange)="filtrarAtletas()" placeholder="Código ou Nome"></ion-searchbar>
 
   <ion-list class="list" [inset]="true">
     <ion-item class="item-background-color" *ngFor="let atleta of atletasFiltrados" >

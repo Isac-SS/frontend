@@ -47,13 +47,15 @@ export class ListaAtletasComponent implements OnInit {
   }
 
   filtrarAtletas() {
-    if(this.termoPesquisa.trim() === ''){
+    if (this.termoPesquisa.trim() === '') {
       this.atletasFiltrados = this.atletasList;
     } else {
+      const termoLowerCase = this.termoPesquisa.toLowerCase();
       this.atletasFiltrados = this.atletasList.filter(atleta =>
-        atleta.cod.toString().includes(this.termoPesquisa));
+        atleta.cod.toString().includes(termoLowerCase) || atleta.nome.toLowerCase().includes(termoLowerCase)
+      );
     }
-}
+  }
 
   async editarAtleta(atleta: Atleta) {
     const modal = await this.modalController.create({
