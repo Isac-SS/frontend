@@ -5,6 +5,8 @@ import { ModalController } from '@ionic/angular';
 import { EdicaoAtletaComponent } from '../edicao-atleta/edicao-atleta.component';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { AlertController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-lista-atletas',
@@ -22,6 +24,7 @@ export class ListaAtletasComponent implements OnInit {
   constructor(
     public atletaService: AtletasService,
     private modalController: ModalController,
+    private alertController: AlertController
   ) {}
 
   ngOnInit() {
@@ -77,16 +80,36 @@ export class ListaAtletasComponent implements OnInit {
     return await modal.present();
   }
 
-  excluirAtleta(atleta: Atleta) {
-    if (atleta.cod) {
-      this.atletaService.excluirAtleta(atleta.cod).subscribe(() => {
-        console.log(`Atleta ${atleta.cod} excluído com sucesso.`);
-        this.getAtletas();
-      }, (error) => {
-        console.error(`Erro ao excluir atleta: ${error}`);
-      });
-    } else {
-      console.error('Código do atleta indefinido');
-    }
+  async excluirAtleta(atleta: Atleta) {
+    const alert = await this.alertController.create({
+      header: 'Confirmação',
+      message: "Deseja excluir esse atleta?",
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Exclusão cancelada')
+          },
+        },
+        {
+          text: 'Confirmar',
+          handler: () => {
+            if (atleta.cod) {
+              this.atletaService.excluirAtleta(atleta.cod).subscribe(() => {
+                console.log(`Atleta ${atleta.cod} excluído com sucesso.`);
+                this.getAtletas();
+              }, (error) => {
+                console.error(`Erro ao excluir atleta: ${error}`);
+              });
+            } else {
+              console.error('Código do atleta indefinido');
+            }
+          }
+        }
+      ]
+    })
+
+    await alert.present();
   }
 }
