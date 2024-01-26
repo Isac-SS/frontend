@@ -6,6 +6,8 @@ import { ModalController } from '@ionic/angular';
 import * as moment from 'moment';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { AlertController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-lista-eventos',
@@ -21,7 +23,8 @@ export class ListaEventosComponent implements OnInit, OnDestroy {
 
   constructor(
     public eventosService: EventosService,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private alertController: AlertController
   ) {}
 
   ngOnInit() {
@@ -84,5 +87,38 @@ export class ListaEventosComponent implements OnInit, OnDestroy {
     });
 
     await modal.present();
+  }
+
+  async excluirEvento(evento: Evento) {
+    const alert = await this.alertController.create({
+      header: 'Confirmação',
+      message: 'Deseja excluir esse evento?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Exclusão cancelada');
+          }
+        },
+        {
+          text: 'Confirmar',
+          handler: () => {
+            if (evento.id) {
+              this.eventosService.excluirEvento(evento.id).subscribe(() => {
+                console.log(`Evento ${evento.id} excluído com sucesso.`);
+                this.getEventos();
+              }, (error) => {
+                console.error(`Erro ao excluir evento: ${error}`);
+              });
+            } else {
+              console.error('Id do evento indefinido');
+            }
+          }
+        }
+      ]
+    });
+  
+    await alert.present();
   }
 }
