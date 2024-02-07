@@ -2,10 +2,12 @@
   <div class="div-slogan">
     <button class="first-btn" (click)="mostrarAtletas()">Atletas</button>
     <button (click)="mostrarEventos()">Eventos</button>
+    <button (click)="mostrarEmbarcacoes()">Embarcações</button>
   </div>
 
   <app-lista-atletas *ngIf="mostrarListaAtletas"></app-lista-atletas> 
   <app-lista-eventos *ngIf="mostrarListaEventos"></app-lista-eventos>
+  <app-lista-embarcacoes *ngIf="mostrarListaEmbarcacoes"></app-lista-embarcacoes>
 
   <button (click)="abrirPopupCriacaoItem()" class="botao-criar">
     +

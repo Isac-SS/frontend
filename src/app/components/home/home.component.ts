@@ -11,6 +11,7 @@ import { CriacaoEventoComponent } from '../eventos/criacao-evento/criacao-evento
 export class HomeComponent implements OnInit {
   mostrarListaAtletas: boolean = true;
   mostrarListaEventos: boolean = false;
+  mostrarListaEmbarcacoes: boolean = false;
 
   constructor(private modalController: ModalController) {}
 
@@ -19,11 +20,21 @@ export class HomeComponent implements OnInit {
   mostrarAtletas() {
     this.mostrarListaAtletas = true;
     this.mostrarListaEventos = false;
+    this.mostrarListaEmbarcacoes = false;
+
   }
 
   mostrarEventos() {
     this.mostrarListaAtletas = false;
     this.mostrarListaEventos = true;
+    this.mostrarListaEmbarcacoes = false;
+
+  }
+
+  mostrarEmbarcacoes() { 
+    this.mostrarListaAtletas = false;
+    this.mostrarListaEventos = false;
+    this.mostrarListaEmbarcacoes = true;
   }
 
   async abrirPopupCriacaoItem() {
