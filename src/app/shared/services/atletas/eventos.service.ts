@@ -42,7 +42,20 @@ export class EventosService {
 
   public editarEvento(eventoId: string, evento: Evento): Observable<Evento> {
     const url = `${this.apiUrl}eventos/editar/${eventoId}`;
-    return this.httpClient.put<Evento>(url, evento, this.httpOptions);
+    
+    console.log('URL da requisição de edição:', url);
+    console.log('Dados do evento a serem enviados:', evento);
+  
+    return this.httpClient.put<Evento>(url, evento, this.httpOptions)
+      .pipe(
+        tap((eventoAtualizado) => {
+          console.log('Resposta do backend após edição:', eventoAtualizado);
+        }),
+        catchError((error) => {
+          console.error('Erro ao editar evento:', error);
+          throw error;
+        })
+      );
   }
 
   public excluirEvento(eventoId: string): Observable<void> {
