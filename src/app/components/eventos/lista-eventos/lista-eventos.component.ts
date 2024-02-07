@@ -7,6 +7,7 @@ import * as moment from 'moment';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AlertController } from '@ionic/angular';
+import { EdicaoEventoComponent } from '../edicao-evento/edicao-evento.component';
 
 
 @Component({
@@ -67,25 +68,23 @@ export class ListaEventosComponent implements OnInit, OnDestroy {
 
   async editarEvento(evento: Evento) {
     const modal = await this.modalController.create({
-      component: ListaEventosComponent,
+      component: EdicaoEventoComponent,
       componentProps: {
-        evento: evento,
+        evento: { ...evento },
       },
     });
-
+  
     modal.onDidDismiss().then((dadosEditados) => {
       if (dadosEditados && dadosEditados.data) {
         const eventoEditado: Evento = dadosEditados.data;
-
+  
         const eventoId = evento.id ? evento.id : '';
-        this.eventosService
-          .editarEvento(eventoId, eventoEditado)
-          .subscribe(() => {
-            this.getEventos();
-          });
+        this.eventosService.editarEvento(eventoId, eventoEditado).subscribe(() => {
+          this.getEventos();
+        });
       }
     });
-
+  
     await modal.present();
   }
 
