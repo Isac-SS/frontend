@@ -1,0 +1,45 @@
+.container-list {
+    position: relative;
+    top: 250px;
+    width: 90vw;
+    height: 60%;
+  
+    ion-searchbar {
+      margin-left: auto;
+      margin-right: auto;
+      --border-radius: 8px;
+      width: 95%;
+    }
+    
+    ion-item {
+      color:rgb(0, 0, 0);
+      font-weight: 500;
+      --background: #47783b50;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      
+  
+      p {
+        font-size: 1.1rem;
+        color: #e67f0a;
+        margin: 0;
+      }
+  
+      ion-label {
+        margin: 15px 0;
+      }
+    }
+  
+    ion-button {
+      height: 55px;
+      border-radius: 5px;
+    
+      .create{
+        color: rgb(79, 42, 165);
+      }
+  
+      .trash {
+        color: rgb(128, 3, 3);
+      }
+    }
+  }
