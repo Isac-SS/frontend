@@ -1,4 +1,3 @@
-
 ion-header {
   display: flex;
   align-items: center;
@@ -7,27 +6,19 @@ ion-header {
     --background: linear-gradient(90deg, #48793c 22%, #bcc200 100%);
     padding: 15px;
     color: #fff;
-  } 
+    width: 100%;
+  }
 }
 
-ion-datetime {
-  max-width: 100%; 
-  margin: 0 auto;
-  padding-top: 40px;
-}
-
-ion-content.container {
+.form {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-
-}
-
-form {
   width: 100%;
-}
+  padding: 20px;
 
-ion-button {
-  --background: linear-gradient(90deg, #48793c 22%, #bcc200 100%);
+  .date {
+    padding: 0;
+    margin: 0;
+  }
 }

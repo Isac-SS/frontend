@@ -1,8 +1,7 @@
 <ion-content class="container">
-
   <ion-header>
     <ion-toolbar>
-      <ion-title>Editar evento</ion-title>
+      <ion-title>Criar Evento</ion-title>
       <ion-buttons slot="end">
         <ion-button (click)="fecharModal()">
           <ion-icon name="close"></ion-icon>
@@ -11,27 +10,46 @@
     </ion-toolbar>
   </ion-header>
 
-  <form >
+  <form class="form" [formGroup]="eventoForm" (ngSubmit)="salvarEdicao()">
     <ion-item>
       <ion-label position="floating">Evento</ion-label>
-      <ion-input formControlName="nome" placeholder="Alterar Nome do evento" clearInput type="text"></ion-input>
+      <ion-input
+        formControlName="nome"
+        placeholder="Alterar Nome do evento"
+        clearInput
+        type="text"
+      ></ion-input>
     </ion-item>
-    
+
     <ion-item class="date">
       <ion-label position="floating">Data</ion-label>
-      <ion-datetime formControlName="data" placeholder="Alterar Data do evento" display-format="DD/MM/YYYY" clearInput></ion-datetime>
+      <ion-datetime
+        formControlName="dataEvento"
+        placeholder="Alterar Data do evento"
+        display-format="DD/MM/YYYY"
+        clearInput
+      ></ion-datetime>
     </ion-item>
-    
+
     <ion-item class="date">
       <ion-label position="floating">Inicio das inscrições</ion-label>
-      <ion-datetime formControlName="inscricoesInicio" placeholder="Alterar data de inicio das inscrições" display-format="DD/MM/YYYY" clearInput></ion-datetime>
+      <ion-datetime
+        formControlName="inicioInscricoes"
+        placeholder="Alterar data de inicio das inscrições"
+        display-format="DD/MM/YYYY"
+        clearInput
+      ></ion-datetime>
     </ion-item>
 
     <ion-item class="date">
       <ion-label position="floating">Termino das inscrições</ion-label>
-      <ion-datetime formControlName="inscricoesTermino" placeholder="Alterar data de termino das inscrições" display-format="DD/MM/YYYY" clearInput></ion-datetime>
+      <ion-datetime
+        formControlName="fimInscricoes"
+        placeholder="Alterar data de termino das inscrições"
+        display-format="DD/MM/YYYY"
+        clearInput
+      ></ion-datetime>
     </ion-item>
-   
 
     <ion-button type="submit" expand="full">
       <ion-icon slot="end" name="checkmark-outline"></ion-icon>

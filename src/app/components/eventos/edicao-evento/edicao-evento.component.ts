@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { Evento } from 'src/app/shared/model/evento.model';
 import { EventosService } from 'src/app/shared/services/atletas/eventos.service';
+import { ListaEventosComponent } from '../lista-eventos/lista-eventos.component';
+
 
 
 @Component({
@@ -43,7 +45,8 @@ export class EdicaoEventoComponent  implements OnInit {
         this.evento.inicioInscricoes = this.eventoForm.get('inicioInscricoes')?.value;
         this.evento.fimInscricoes = this.eventoForm.get('fimInscricoes')?.value;
   
-        // Verifique se evento.id não é undefined antes de chamá-lo
+        console.log(this.evento.nome)
+
         if (this.evento.id !== undefined) {
           this.eventosService.editarEvento(this.evento.id, this.evento).subscribe(() => {
           });

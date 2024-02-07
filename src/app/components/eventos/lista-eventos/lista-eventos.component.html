@@ -1,5 +1,5 @@
 <ion-content class="container-list">
-  <ion-searchbar [(ngModel)]="termoPesquisa" placeholder="Pesquisar por Código"></ion-searchbar>
+  <ion-searchbar [(ngModel)]="termoPesquisa" (ionChange)="filtrarEventos()" placeholder="Pesquisar por Código"></ion-searchbar>
 
   <ion-list class="list" [inset]="true">
     <ion-item class="item" *ngFor="let evento of eventosFiltrados">
