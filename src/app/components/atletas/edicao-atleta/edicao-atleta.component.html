@@ -1,8 +1,71 @@
 <ion-content class="container">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Área do atleta</ion-title>
+      <ion-buttons slot="end">
+        <ion-button class="end" (click)="fecharModal()">
+          <ion-icon name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-item class="athlete-details" *ngIf="!modoEdicao">
+
+    <ion-list lines="inset">
+      <ion-item>
+        <ion-label>Nome: {{ atleta.nome }}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Sobrenome: PENDENTE</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>CPF: {{ atleta.cpf }}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Código: {{ atleta.cod }}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>EMBARCAÇÃO</ion-label>
+      </ion-item>
+    </ion-list> 
+      
+  </ion-item>
+    
+
+  <form *ngIf="modoEdicao" [formGroup]="atletaForm" (ngSubmit)="salvarEdicao()">
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input formControlName="nome" placeholder="Alterar Nome" clearInput type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Sobrenome</ion-label>
+      <ion-input formControlName="sobrenome" placeholder="Alterar sobrenome" clearInput type="text"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="floating">CPF</ion-label>
+      <ion-input formControlName="cpf" placeholder="Alterar CPF" clearInput type="number"></ion-input>
+    </ion-item>
+
+    <ion-button type="submit" expand="full">
+      Salvar <ion-icon name="checkmark-circle-outline"></ion-icon>
+    </ion-button>
+  </form>
+
+
+  <ion-button expand="full" class="alteraEdicao" *ngIf="!modoEdicao" (click)="alternarModo()">Editar</ion-button>
+  <ion-button expand="full" class="alteraEdicao" *ngIf="modoEdicao" (click)="alternarModo()">Voltar</ion-button>
+  
+
+</ion-content>
+
+<!-- <ion-content class="container">
 
   <ion-header>
     <ion-toolbar>
-      <ion-title>Editar atleta</ion-title>
+      <ion-title>Área do atleta</ion-title>
       <ion-buttons slot="end">
         <ion-button (click)="fecharModal()">
           <ion-icon name="close"></ion-icon>
@@ -27,4 +90,4 @@
       Alterar
     </ion-button>
   </form>
-</ion-content>
+</ion-content> -->

@@ -12,8 +12,9 @@ import { AtletasService } from 'src/app/shared/services/atletas/atletas.service'
 export class EdicaoAtletaComponent implements OnInit {
   @Input()
   atleta!: Atleta;
-
   atletaForm!: FormGroup;
+  modoEdicao: boolean = false;
+
 
   constructor(
     private modalController: ModalController,
@@ -22,6 +23,13 @@ export class EdicaoAtletaComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.atletaForm = this.fb.group({
+      nome: [this.atleta.nome || '', Validators.required],
+      cpf: [this.atleta.cpf || '', Validators.required],
+    });
+  }
+
+  inicializarFormulario() {
     this.atletaForm = this.fb.group({
       nome: [this.atleta.nome || '', Validators.required],
       cpf: [this.atleta.cpf || '', Validators.required],
@@ -48,6 +56,13 @@ export class EdicaoAtletaComponent implements OnInit {
           this.fecharModal();
         }
       }
+    }
+  }
+
+  alternarModo() {
+    this.modoEdicao = !this.modoEdicao;
+    if (!this.modoEdicao) {
+      this.inicializarFormulario();
     }
   }
 }

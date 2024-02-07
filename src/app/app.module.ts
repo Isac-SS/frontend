@@ -24,6 +24,8 @@ import { EdicaoAtletaComponent } from './components/atletas/edicao-atleta/edicao
 import { CriacaoAtletaComponent } from './components/atletas/criacao-atleta/criacao-atleta.component';
 import { ListaEventosModule } from './components/eventos/lista-eventos/lista-eventos.module'; 
 import { CriacaoEventoComponent } from './components/eventos/criacao-evento/criacao-evento.component';
+import { EdicaoEventoModule } from './components/eventos/edicao-evento/edicao-eventos.module';
+import { listaEmbarcacoesModule } from './components/embarcacoes/lista-embarcacoes/lista-embarcacoes.module';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,10 @@ import { CriacaoEventoComponent } from './components/eventos/criacao-evento/cria
     ReactiveFormsModule,
     MatToolbarModule,
     ListaEventosModule,
-    HomeModule
+    HomeModule,
+    EdicaoEventoModule,
+    listaEmbarcacoesModule
+
     
 
   ],
