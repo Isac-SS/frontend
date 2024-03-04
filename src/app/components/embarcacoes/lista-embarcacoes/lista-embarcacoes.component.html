@@ -1,12 +1,14 @@
 <ion-content class="container-list">
-  <ion-searchbar [(ngModel)]="termoPesquisa" (ionChange)="filtrarAtletas()" placeholder="Nome da embarcação"></ion-searchbar>
+  <ion-searchbar [(ngModel)]="termoPesquisa" (ionChange)="filtrarEmbarcacoes()" placeholder="Nome da embarcação"></ion-searchbar> 
 
   <ion-list class="list" [inset]="true">
-    <ion-item class="item-background-color" *ngFor="let embarcacao of embarcacoesList">
+    <ion-item (click)="editarEmbarcacao(embarcacao)" class="item-background-color" *ngFor="let embarcacao of embarcacoesFiltradas">
+      <ion-label>{{ embarcacao.cod }}</ion-label>
       <ion-label>{{ embarcacao.nome }}</ion-label>
 
+
       <ion-buttons slot="end">
-        <ion-button>
+        <ion-button (click)="excluirEmbarcacao(embarcacao)">
           <ion-icon class="trash" name="trash"></ion-icon>
         </ion-button>
       </ion-buttons>
