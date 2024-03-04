@@ -15,18 +15,20 @@ export class EmbarcacaoService {
   }
 
   createEmbarcacao(embarcacao: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}nova`, embarcacao);
+    return this.http.post(`${this.apiUrl}embarcacoes/nova`, embarcacao); 
   }
 
   getEmbarcacaoByCod(cod: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}buscar/${cod}`);
+    
+    return this.http.get(`${this.apiUrl}embarcacoes/buscar/${cod}`);
   }
 
   updateEmbarcacao(cod: string, data: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}editar/${cod}`, data);
+    console.log("1 updateEmbarcacao - ", cod);
+    return this.http.put(`${this.apiUrl}embarcacoes/editar/${cod}`, data); 
   }
 
   deleteEmbarcacao(cod: string): Observable<any> {
-    return this.http.delete(`${this.apiUrl}excluir/${cod}`);
+    return this.http.delete(`${this.apiUrl}embarcacoes/excluir/${cod}`); 
   }
 }

@@ -41,7 +41,7 @@ export class AtletasService {
   }
 
   public editarAtleta(atletaCod: number, atleta: Atleta): Observable<Atleta> {
-    const url = `${this.apiUrl}atletas/${atletaCod}`;
+    const url = `${this.apiUrl}atletas/editar/${atletaCod}`;
     return this.httpClient.put<Atleta>(url, atleta, this.httpOptions);
   }
 
