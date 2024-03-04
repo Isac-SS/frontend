@@ -26,7 +26,7 @@
         <ion-label>Código: {{ atleta.cod }}</ion-label>
       </ion-item>
       <ion-item>
-        <ion-label>EMBARCAÇÃO</ion-label>
+        <ion-label>EMBARCAÇÕES EM QUE O ATLETA ESTÁ CADASTRADO</ion-label>
       </ion-item>
     </ion-list> 
       
@@ -61,33 +61,3 @@
 
 </ion-content>
 
-<!-- <ion-content class="container">
-
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Área do atleta</ion-title>
-      <ion-buttons slot="end">
-        <ion-button (click)="fecharModal()">
-          <ion-icon name="close"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-
-  <form [formGroup]="atletaForm" (ngSubmit)="salvarEdicao()">
-    <ion-item>
-      <ion-label position="floating">Nome</ion-label>
-      <ion-input formControlName="nome" placeholder="Alterar Nome" clearInput type="text"></ion-input>
-    </ion-item>
-    
-    <ion-item>
-      <ion-label position="floating">CPF</ion-label>
-      <ion-input formControlName="cpf" placeholder="Alterar CPF" clearInput type="number"></ion-input>
-    </ion-item>
-
-    <ion-button type="submit" expand="full">
-      <ion-icon slot="end" name="checkmark-outline"></ion-icon>
-      Alterar
-    </ion-button>
-  </form>
-</ion-content> -->

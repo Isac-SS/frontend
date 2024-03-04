@@ -26,12 +26,14 @@ import { ListaEventosModule } from './components/eventos/lista-eventos/lista-eve
 import { CriacaoEventoComponent } from './components/eventos/criacao-evento/criacao-evento.component';
 import { EdicaoEventoModule } from './components/eventos/edicao-evento/edicao-eventos.module';
 import { listaEmbarcacoesModule } from './components/embarcacoes/lista-embarcacoes/lista-embarcacoes.module';
+import { EdicaoEmbarcacaoComponent } from './components/embarcacoes/edicao-embarcacao/edicao-embarcacao.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     EdicaoAtletaComponent,
+    EdicaoEmbarcacaoComponent,
     CriacaoAtletaComponent,
     CriacaoEventoComponent
     

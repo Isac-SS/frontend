@@ -9,6 +9,13 @@ ion-header {
   }
 }
 
+ion-item {
+  ion-label {
+    width:  100vw;
+
+  }
+}
+
 ion-button {
   --background: linear-gradient(90deg, #48793c 22%, #bcc200 100%);
 }

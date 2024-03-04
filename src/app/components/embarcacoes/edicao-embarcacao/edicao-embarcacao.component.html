@@ -1,0 +1,69 @@
+<ion-content class="container">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Área de embarcação</ion-title>
+      <ion-buttons slot="end">
+        <ion-button class="end" (click)="fecharModal()">
+          <ion-icon name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Tela de Visualização -->
+  <ion-item *ngIf="!modoEdicao">
+    <ion-label>Nome: {{ embarcacao.nome }} </ion-label>
+    <ion-list class="atletasMarcados" *ngIf="atletasMarcadosArray.length > 0">
+      <ion-title>Atletas Marcados:</ion-title>
+      <ion-item *ngFor="let atleta of atletasMarcadosArray">
+        {{ atleta.nome }}
+      </ion-item>
+    </ion-list>
+  </ion-item>
+
+  <!-- Tela de Edição -->
+  <form *ngIf="modoEdicao" [formGroup]="embarbarcaoForm" (ngSubmit)="salvarEdicao()">
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input
+        formControlName="nome"
+        placeholder="Alterar Nome"
+        clearInput
+        type="text"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-title>Adicionar atletas a embarcação:</ion-title>
+      <ion-list class="listaAtletas">
+        <ion-item *ngFor="let atleta of atletas">
+          <ion-checkbox 
+          [checked]="isAtletaMarcado(atleta)"
+          (ionChange)="toggleAtleta(atleta)"
+          justify="space-between">
+          {{ atleta.nome }}
+        </ion-checkbox>
+        </ion-item>
+      </ion-list>
+    </ion-item>
+
+    <ion-button type="submit" expand="full">
+      Salvar <ion-icon name="checkmark-circle-outline"></ion-icon>
+    </ion-button>
+  </form>
+
+  <!-- Botão de Edição/Visualização -->
+  <ion-button
+    expand="full"
+    class="alteraEdicao"
+    *ngIf="!modoEdicao"
+    (click)="alternarModo()"
+  >Editar</ion-button>
+
+  <ion-button
+    expand="full"
+    class="alteraEdicao"
+    *ngIf="modoEdicao"
+    (click)="alternarModo()"
+  >Voltar</ion-button>
+</ion-content>
